@@ -1,0 +1,36 @@
+seed: 42
+device: auto
+
+data:
+  train_path: project/data/processed/train.txt
+  val_path: project/data/processed/val.txt
+  test_path: project/data/processed/test.txt
+  vocab_path: project/data/processed/vocab.json
+  sft_path: project/data/processed/sft.jsonl
+  sft_val_ratio: 0.1
+
+model:
+  block_size: 32
+  n_layer: 2
+  n_head: 2
+  n_embd: 64
+  dropout: 0.1
+
+train:
+  pretrain_checkpoint_dir: project/checkpoints/pretrain
+  batch_size: 4
+  max_steps: 40
+  eval_interval: 20
+  eval_steps: 5
+  log_interval: 10
+  learning_rate: 0.0002
+  weight_decay: 0.01
+  grad_clip: 1.0
+  warmup_steps: 5
+  use_amp: false
+  checkpoint_dir: project/checkpoints/sft
+
+generate:
+  max_new_tokens: 40
+  temperature: 0.8
+  top_k: 10

@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# Training artifacts (regenerate locally)
+project/checkpoints/**/*.pt
+project/checkpoints/**/train_log.txt
+project/checkpoints/**/metrics.json
+
+# Generated datasets
+project/data/processed/*
+!project/data/processed/.gitkeep
+
+# User-added large sources (keep only small samples in git)
+project/data/raw/*.pdf
+project/data/raw/*语录*
+project/data/raw/yulu_quality_lines.txt
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

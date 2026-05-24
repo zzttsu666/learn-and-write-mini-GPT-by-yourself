@@ -1,0 +1,50 @@
+seed: 42
+device: cuda
+
+data:
+  train_path: project/data/processed/train.txt
+  val_path: project/data/processed/val.txt
+  test_path: project/data/processed/test.txt
+  vocab_path: project/data/processed/vocab.json
+  sft_path: project/data/processed/sft.jsonl
+  raw_dir: project/data/raw
+  processed_dir: project/data/processed
+  train_split: 0.9
+  val_split: 0.05
+  min_paragraph_chars: 8
+  sft_min_line_len: 14
+  sft_quality_threshold: 0.35
+  sft_max_pairs: 8000
+  qa_path: project/data/processed/qa.jsonl
+  qa_max_pairs: 12000
+
+model:
+  block_size: 192
+  vocab_size: null
+  n_layer: 6
+  n_head: 6
+  n_embd: 384
+  dropout: 0.15
+
+train:
+  batch_size: 8
+  grad_accum_steps: 2
+  max_steps: 10000
+  eval_interval: 250
+  eval_steps: 60
+  log_interval: 20
+  learning_rate: 0.00025
+  weight_decay: 0.12
+  grad_clip: 1.0
+  warmup_steps: 400
+  use_amp: true
+  checkpoint_dir: project/checkpoints/pretrain
+  checkpoint_every: 800
+  early_stop_patience: 12
+
+generate:
+  max_new_tokens: 280
+  temperature: 0.68
+  top_k: 18
+  top_p: 0.92
+  repetition_penalty: 1.08
